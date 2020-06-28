@@ -25,6 +25,7 @@ public class SampleAdapter extends RecyclerView.Adapter<SampleViewHolder> implem
 
     @Override
     public Filter getFilter() {
+        // static instance of the filter to be used outside in order to filter out the contents
         return exampleFilter;
     }
 
@@ -46,6 +47,10 @@ public class SampleAdapter extends RecyclerView.Adapter<SampleViewHolder> implem
         return items.size();
     }
 
+    /**
+     * Simple Filter implementation using contains method of String
+     * We can change the implementation to use some more advance like database call etc
+     */
     private Filter exampleFilter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {

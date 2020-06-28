@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
         final RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
+        // populates a dummy list of items of demonstration purposes
         final List<SampleItem> items = new ArrayList<>();
         for (int i = 0; i < 10; i++)
         {
@@ -30,11 +31,15 @@ public class MainActivity extends AppCompatActivity {
             item.setText("SampleItem-" + i);
             items.add(item);
         }
+        // links the adapter as the main source of data
         final SampleAdapter adapter = new SampleAdapter(items);
         recyclerView.setAdapter(adapter);
-
+        
         final SearchView searchView = findViewById(R.id.searchView);
         searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        /**
+         * This is the code that integrates with the Filter object implemented by Filterable interface
+         */
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
